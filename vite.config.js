@@ -28,6 +28,18 @@ export default defineConfig({
                 src: 'resources/assets_template/fonts/*',
                 dest: 'assets_template/fonts/'
               },
+              {
+                src: 'resources/css/home.css',
+                dest: 'web/css/'
+              },
+              {
+                src: 'resources/js/home.js',
+                dest: 'web/js/'
+              },
+              {
+                src: 'resources/img/**/*',
+                dest: 'web/img/'
+              },
             ]
           })
     ],
