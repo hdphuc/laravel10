@@ -67,7 +67,7 @@ $commands = array(
 	'php artisan optimize',
 	'php artisan migrate',
 	'npm install',
-    'npm run dev',
+    'npm run build',
 	'php artisan optimize',
 );
 
