@@ -13,7 +13,7 @@ class DashboardController extends Controller
      * @return Illuminate\Contracts\View\View
     */
     public function index() {
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.login');
     }
 
     /**
