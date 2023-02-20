@@ -35,7 +35,8 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start" action="{{ route('admin.index') }}" method="GET">
+                <form role="form" class="text-start" action="{{ route('admin.postLogin') }}" method="POST">
+                  @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control">

@@ -20,6 +20,7 @@ Route::name('admin')
 ->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('.index');
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])->name('.login.index');
+    Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'postLogin'])->name('.postLogin');
     Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('.logout');
     Route::get('/register', [App\Http\Controllers\Admin\LoginController::class, 'register'])->name('.register');
     Route::post('/register', [App\Http\Controllers\Admin\LoginController::class, 'postRegister'])->name('.postRegister');
