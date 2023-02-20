@@ -15,13 +15,13 @@
         <div class="col-12 col-md-6">
           <ul class="nav nav-footer justify-content-center justify-content-lg-end">
             <li class="nav-item">
-              <a href="{{ route('admin.index') }}" class="nav-link text-white" target="_blank">About Us</a>
+              <a href="{{ route('web.pages.show', 'about') }}" class="nav-link text-white">About Us</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('admin.index') }}" class="nav-link text-white" target="_blank">Blog</a>
+              <a href="{{ route('web.pages.show', 'about') }}" class="nav-link text-white">Blog</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('admin.index') }}" class="nav-link pe-0 text-white" target="_blank">License</a>
+              <a href="{{ route('web.pages.show', 'about') }}" class="nav-link pe-0 text-white">License</a>
             </li>
           </ul>
         </div>

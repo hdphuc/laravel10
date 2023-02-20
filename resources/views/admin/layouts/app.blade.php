@@ -32,8 +32,8 @@
                 </div>
             </div>
         </div>
+        @include('admin.layouts.partials.footer')
     </main>
-    @include('admin.layouts.partials.footer')
     @yield('script')
 </body>
 

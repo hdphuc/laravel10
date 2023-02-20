@@ -20,7 +20,7 @@ class LoginController extends Controller
     
     public function postLogin(Request $request)
     {
-        return view('admin.auth.register');
+        return redirect()->route('admin.dashboard');
     }
 
     public function register()
@@ -30,6 +30,11 @@ class LoginController extends Controller
 
     public function postRegister()
     {
-        return view('admin.auth.register');
+        return view('admin.auth.login');
+    }
+
+    public function logout()
+    {
+        return view('admin.auth.login');
     }
 }

@@ -20,9 +20,24 @@ Route::name('admin')
 ->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('.index');
     Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])->name('.login.index');
+    Route::get('/logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('.logout');
     Route::get('/register', [App\Http\Controllers\Admin\LoginController::class, 'register'])->name('.register');
     Route::post('/register', [App\Http\Controllers\Admin\LoginController::class, 'postRegister'])->name('.postRegister');
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('.dashboard');
+
+
+    Route::name('.users')
+    ->prefix('users')
+    ->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('.index');
+        Route::get('/profile', [App\Http\Controllers\Admin\UserController::class, 'profile'])->name('.profile');
+    });
+
+    Route::name('.payments')
+    ->prefix('payments')
+    ->group(function () {
+        Route::get('/billing', [App\Http\Controllers\Admin\PaymentController::class, 'billing'])->name('.billing');
+    });
 });
 
 Route::name('web')
@@ -34,4 +49,5 @@ Route::name('web')
         ->group(function () {
             Route::get('/{url}', [App\Http\Controllers\Web\PagesController::class, 'show'])->name('.show');
         });
+    
 });
