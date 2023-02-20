@@ -22,13 +22,11 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <main class="main-content mt-0 position-relative max-height-vh-100 h-100 border-radius-lg ">
         @include('admin.auth.layouts.partials.header')
         <div class="main" id="main">
             <div class="main-wrapper">
-                <div class="main-content">
-                    @yield('content')
-                </div>
+                  @yield('content')
             </div>
         </div>
     </main>

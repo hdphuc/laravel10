@@ -23,7 +23,11 @@
 </head>
 
 <body id="page-top">
-    @include('web.layouts.partials.header')
+    @if(request()->route()->getName() == 'web.homepage')
+        @include('web.layouts.partials.header_home')
+    @else
+        @include('web.layouts.partials.header')
+    @endif
     <div class="content-wrap" id="main">
         <div class="main-content">
             @yield('content')

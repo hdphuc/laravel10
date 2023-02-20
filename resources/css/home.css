@@ -3948,6 +3948,15 @@ textarea.form-control-lg {
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
+.navbar-brand img{
+  transition: 0.3s all;
+}
+
+#mainNav.navbar-shrink .navbar-brand img{
+  height: 50px;
+  width: auto !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
     transition: none;

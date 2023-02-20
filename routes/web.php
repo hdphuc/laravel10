@@ -13,14 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
 
 Route::name('admin')
 ->prefix('admin')
 ->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('.index');
+    Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])->name('.login.index');
+    Route::get('/register', [App\Http\Controllers\Admin\LoginController::class, 'register'])->name('.register');
+    Route::post('/register', [App\Http\Controllers\Admin\LoginController::class, 'postRegister'])->name('.postRegister');
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('.dashboard');
+});
+
+Route::name('web')
+->group(function () {
+    Route::get('/', function () {return view('home');})->name('.homepage');
+
+    Route::name('.pages')
+        ->prefix('pages')
+        ->group(function () {
+            Route::get('/{url}', [App\Http\Controllers\Web\PagesController::class, 'show'])->name('.show');
+        });
 });

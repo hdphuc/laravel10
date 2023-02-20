@@ -27,7 +27,7 @@
                     <p class="text-white-75 mb-4">Start Bootstrap has everything you need to get your new website up and
                         running in no time! Choose one of our open source, free to download, and easy to use themes! No
                         strings attached!</p>
-                    <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
+                    <a class="btn btn-light btn-xl" href="{{ route('web.pages.show', 'about') }}">Get Started!</a>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
     <section class="page-section bg-dark text-white">
         <div class="container px-4 px-lg-5 text-center">
             <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-            <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Download Now!</a>
+            <a class="btn btn-light btn-xl" href="#download">Download Now!</a>
         </div>
     </section>
     <!-- Contact-->
@@ -210,7 +210,7 @@
                                 To activate this form, sign up at
                                 <br />
                                 <a
-                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    href="#contact-form">contact-forms</a>
                             </div>
                         </div>
                         <!-- Submit error message-->
@@ -229,7 +229,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 text-center mb-5 mb-lg-0">
                     <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                    <div>+1 (555) 123-4567</div>
+                    <div>0396971094</div>
                 </div>
             </div>
         </div>
