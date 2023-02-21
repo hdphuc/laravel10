@@ -35,7 +35,7 @@ class LineServices
                 'client_secret' => config('line.LINE_LOGIN_CHANNEL_SECRET')
             ]
         ]);
-        Log::info("getLineToken", $response->getBody()->getContents());
+        Log::info(["getLineToken", $response->getBody()->getContents()]);
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -49,7 +49,7 @@ class LineServices
         $response = $client->get( config('line.line_profile_uri'), [
             'headers' => $headers
         ]);
-        Log::info("getUserProfile", $response->getBody()->getContents());
+        Log::info(["getUserProfile", $response->getBody()->getContents()]);
         return json_decode($response->getBody()->getContents(), true);
     }
 
@@ -61,7 +61,7 @@ class LineServices
                 'client_id' => config('line.LINE_LOGIN_CHANNEL_ID'),
             ]
         ]);
-        Log::info("verifyIDToken", $response->getBody()->getContents());
+        Log::info(["verifyIDToken", $response->getBody()->getContents()]);
         return json_decode($response->getBody()->getContents(), true);
     }
 }
