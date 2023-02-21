@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -18,7 +19,7 @@ class LoginController extends Controller
     }
 
     
-    public function postLogin(Request $request)
+    public function postLogin(AdminLoginRequest $request)
     {
         return redirect()->route('admin.dashboard');
     }

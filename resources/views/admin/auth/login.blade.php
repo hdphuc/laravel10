@@ -1,5 +1,10 @@
 @extends('admin.auth.layouts.app')
 
+@php
+    $username = old("username", "");
+    $password = old("password", "");
+    $remember = old("remember", false);
+@endphp
 @section('content')
     <div class="page-header align-items-start min-vh-100" style="background-image: url('{{ asset('assets/web/img/login/bg_login.avif') }}');">
       <span class="mask bg-gradient-dark opacity-6"></span>
@@ -37,16 +42,22 @@
               <div class="card-body">
                 <form role="form" class="text-start" action="{{ route('admin.postLogin') }}" method="POST">
                   @csrf
-                  <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control">
+                  <div class="input-group input-group-outline my-3 @if($username) is-focused @endif @if($username && !$errors->has('username')) is-valid @endif">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control @if ($errors->has('username')) is-invalid @endif" value="{{ $username }}">
+                    @if($errors->has('username'))
+                      <div class="invalid-feedback">{{ $errors->first('username') }}</div>
+                    @endif
                   </div>
-                  <div class="input-group input-group-outline mb-3">
+                  <div class="input-group input-group-outline mb-3 @if($password) is-focused @endif @if($password && !$errors->has('password')) is-valid @endif">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" name="password" class="form-control @if ($errors->has('password')) is-invalid @endif" value="{{ $password }}">
+                    @if($errors->has('password'))
+                      <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+                    @endif
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
-                    <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                    <input class="form-check-input" type="checkbox" id="rememberMe" name="remember" @if($remember ) checked @endif>
                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
                   </div>
                   <div class="text-center">
