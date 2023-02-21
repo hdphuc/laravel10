@@ -26,6 +26,10 @@ Route::name('admin')
     Route::post('/register', [App\Http\Controllers\Admin\LoginController::class, 'postRegister'])->name('.postRegister');
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('.dashboard');
 
+    // Login Line
+    Route::get('/login/line', [App\Http\Controllers\Admin\LoginController::class, 'redirectToLine'])->name('.login.line');
+    // Callback url
+    Route::get('/login/line/callback', [App\Http\Controllers\Admin\LoginController::class, 'handleLineCallback'])->name('.login.line.callback');
 
     Route::name('.users')
     ->prefix('users')
@@ -52,3 +56,4 @@ Route::name('web')
         });
     
 });
+

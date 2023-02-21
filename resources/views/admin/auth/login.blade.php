@@ -32,7 +32,7 @@
                       </a>
                     </div>
                     <div class="col-2 text-center me-auto">
-                      <a class="btn btn-link px-3" id="btn-login-by-line" href="javascript:;" title="Login with line">
+                      <a class="btn btn-link px-3" id="btn-login-by-line" href="{{ $lineUrl }}" title="Login with line">
                         <i class="fab fa-line text-white text-lg"></i>
                       </a>
                     </div>
