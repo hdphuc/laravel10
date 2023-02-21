@@ -59,11 +59,15 @@ class LoginController extends Controller
      * @return void
      */
     public function handleLineCallback(Request $request) {
-        $code = $request->input('code', '');
+        $code = $request->get('code');         
         $response = $this->lineServices->getLineToken($code);
-        // Get profile from access token.
-        $profile = $this->lineServices->getLineToken($response['access_token']);
-        // Get profile from ID token
-        $profile = $this->lineServices->verifyIDToken($response['id_token']);
+        if (isset($response['id_token'])) {
+            // Get profile from access token.
+            $profile = $this->lineServices->getUserProfile($response['id_token']);
+            // Get profile from ID token
+            $profile = $this->lineServices->verifyIDToken($response['id_token']);
+        }
+
+        return \response()->json([$response]);
     }
 }
