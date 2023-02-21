@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('login_type');
-            $table->string('asscess_token');
+            $table->text('asscess_token');
             $table->string('expires_token');
-            $table->string('id_token');
+            $table->text('id_token');
             $table->string('user_id');
             $table->string('display_name');
-            $table->string('status_message');
-            $table->string('picture_url');
+            $table->text('status_message');
+            $table->text('picture_url');
             $table->timestamp('verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
