@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
-use App\Http\Services\LineServices;
+use App\Services\LineServices;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -12,13 +13,17 @@ class LoginController extends Controller
     /** @var LineServices */
     protected $lineServices;
 
+    /** @var UserService */
+    protected $userService;
+
     /**
      * LoginController constructor.
      * @param LineServices $lineService
      */
-    public function __construct(LineServices $lineServices)
+    public function __construct(LineServices $lineServices, UserService $userService)
     {
         $this->lineServices = $lineServices;
+        $this->userService = $userService;
     }
 
     /**
@@ -60,14 +65,15 @@ class LoginController extends Controller
      */
     public function handleLineCallback(Request $request) {
         $code = $request->get('code');         
-        $response = $this->lineServices->getLineToken($code);
-        if (isset($response['id_token'])) {
-            // Get profile from access token.
-            $profile = $this->lineServices->getUserProfile($response['id_token']);
-            // Get profile from ID token
-            $profile = $this->lineServices->verifyIDToken($response['id_token']);
-        }
+        $dataUser = (array) $response = $this->lineServices->getLineToken($code);
+        $profile = null;
 
-        return \response()->json([$response]);
+        if (isset($response['access_token'])) {
+            // // Get profile from access token.
+            $profile = $this->lineServices->getUserProfile($response['access_token']);
+            $dataUser = \array_merge($response, (array) $profile);
+        }
+        $responUser = $this->userService->create($dataUser);
+        return \response()->json([$response, $responUser]);
     }
 }

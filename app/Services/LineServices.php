@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services;
 
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 
 class LineServices
 {
@@ -45,7 +44,7 @@ class LineServices
                     'client_secret' => config('line.LINE_LOGIN_CHANNEL_SECRET')
                 ]
             ]);
-            Log::info(["getLineToken", $response->getBody()->getContents()]);
+
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Throwable $th) {
             throw $th;
@@ -63,7 +62,7 @@ class LineServices
             $response = $client->get( config('line.line_profile_uri'), [
                 'headers' => $headers
             ]);
-            Log::info(["getUserProfile", $response->getBody()->getContents()]);
+
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Throwable $th) {
             throw $th;
@@ -80,7 +79,7 @@ class LineServices
                     'client_id' => config('line.LINE_LOGIN_CHANNEL_ID'),
                 ]
             ]);
-            Log::info(["verifyIDToken", $response->getBody()->getContents()]);
+
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Throwable $th) {
             throw $th;
