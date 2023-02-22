@@ -4,6 +4,62 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
+                <form action="">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mx-3 z-index-2">
+                            <h6 class="text-capitalize ps-3 pt-3 pe-3">Filter</h6>
+                        </div>
+                        <div class="card-body pb-4">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="input-group w-100">
+                                        <div class="form-outline w-75">
+                                            <input type="search" id="form1" class="form-control border border-end-0 ps-2" />
+                                            <label class="form-label ps-2" for="form1">Search</label>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-25 m-0">
+                                        <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group">
+                                        <div class="form-outline w-100">
+                                            <input type="email" id="form2" class="form-control border ps-2"/>
+                                            <label class="form-label ps-2" for="form2">Email</label>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group">
+                                        <select class="form-control border form-select ps-2 pe-2" id="select01">
+                                            <option value="">Select</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group">
+                                        <select class="form-control border form-select ps-2 pe-2" id="select02">
+                                            <option value="">Select</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <div class="card my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">

@@ -43,6 +43,13 @@ Route::name('admin')
     ->group(function () {
         Route::get('/billing', [App\Http\Controllers\Admin\PaymentController::class, 'billing'])->name('.billing');
     });
+
+    Route::name('.posts')
+    ->prefix('posts')
+    ->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\PostController::class, 'index'])->name('.index');
+        Route::get('/add', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('.add');
+    });
 });
 
 Route::name('web')
