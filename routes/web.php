@@ -64,3 +64,15 @@ Route::name('web')
     
 });
 
+Route::name('cv')
+->prefix('cv')
+->group(function () {
+    Route::get('/', [\App\Http\Controllers\Web\Cv\CvController::class, 'index'])->name('.homepagecv');
+    
+    Route::name('.projects')
+        ->prefix('projects')
+        ->group(function () {
+            Route::get('/{url}', [App\Http\Controllers\Web\Cv\CvController::class, 'show'])->name('.detail');
+        });
+});
+
