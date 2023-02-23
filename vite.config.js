@@ -17,16 +17,8 @@ export default defineConfig({
           dest: ''
         },
         {
-          src: 'resources/assets_template/img/**/*',
-          dest: 'assets_template/img/'
-        },
-        {
-          src: 'resources/assets_template/js/*',
-          dest: 'assets_template/js/'
-        },
-        {
-          src: 'resources/assets_template/fonts/*',
-          dest: 'assets_template/fonts/'
+          src: 'resources/assets_template/',
+          dest: ''
         },
         {
           src: 'resources/css/home.css',

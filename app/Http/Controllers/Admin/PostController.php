@@ -22,39 +22,39 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(10);
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        return view('admin.posts.edit', compact('categories'));
     }
 
     public function store(StorePostRequest $request)
     {
         $post = $this->postService->createPost($request->validated());
 
-        return redirect()->route('posts.index')
+        return redirect()->route('admin.posts.index')
             ->with('success', 'Post created successfully.');
     }
 
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
     {
         $this->postService->updatePost($post, $request->validated());
 
-        return redirect()->route('posts.index')
+        return redirect()->route('admin.posts.index')
         ->with('success', 'Post updated successfully.');
     }
 
@@ -62,7 +62,7 @@ class PostController extends Controller
     {
         $this->postService->deletePost($post);
 
-        return redirect()->route('posts.index')
+        return redirect()->route('admin.posts.index')
             ->with('success', 'Post deleted successfully.');
     }
 }

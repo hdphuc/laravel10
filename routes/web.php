@@ -47,7 +47,13 @@ Route::name('admin')
     Route::name('.posts')
     ->prefix('posts')
     ->group(function () {
-        Route::resource('posts', 'App\Http\Controllers\Admin\PostController');
+        Route::get('/', [App\Http\Controllers\Admin\PostController::class, 'index'])->name('.index');
+        Route::get('/add', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('.add');
+        Route::post('/add', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('.store');
+        Route::get('/{id}', [App\Http\Controllers\Admin\PostController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [App\Http\Controllers\Admin\PostController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [App\Http\Controllers\Admin\PostController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [App\Http\Controllers\Admin\PostController::class, 'destroy'])->name('.destroy');
     });
 });
 
