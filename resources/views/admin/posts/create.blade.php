@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Create a Post</h1>
-        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="title">Title</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Add</button>
-                <a href="{{ route('posts.index') }}" class="btn btn-secondary">Back</a>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </div>
