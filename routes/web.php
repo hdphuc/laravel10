@@ -47,8 +47,7 @@ Route::name('admin')
     Route::name('.posts')
     ->prefix('posts')
     ->group(function () {
-        Route::get('/', [App\Http\Controllers\Admin\PostController::class, 'index'])->name('.index');
-        Route::get('/add', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('.add');
+        Route::resource('posts', 'App\Http\Controllers\Admin\PostController');
     });
 });
 
