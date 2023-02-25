@@ -81,3 +81,7 @@ Route::name('cv')
         });
 });
 
+Route::get('/chat',  [App\Http\Controllers\Web\ChatController::class, 'index'])->name('chat.index');
+Route::post('/send-message', [App\Http\Controllers\Web\ChatController::class, 'sendMessage'])->name('chat.send.message');
+Route::post('/pusher/webhook', [App\Http\Controllers\Web\PusherWebhookController::class, 'handleWebhook'])->name('pusher.webhook');
+
