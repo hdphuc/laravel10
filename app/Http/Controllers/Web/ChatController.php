@@ -44,8 +44,9 @@ $chat = new Chat();
 
         $pusher->trigger('chat', 'new-message', $data);
 
-event(new NewChatMessage($chat));
+        event(new NewChatMessage($chat));
 
-        return redirect()->route('chat.index');
+        return response()->json($data);
+        // return redirect()->route('chat.index');
     }
 }

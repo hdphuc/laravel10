@@ -479,6 +479,46 @@
         </div>
       </div>
     </div>
+    <button type="button" class="btn btn-primary chat-btn" data-bs-toggle="modal" data-bs-target="#chatModal">
+      <i class="bi bi-chat-left-fill"></i> chat
+    </button>
+    
+    <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="chatModalLabel">Chat with us</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="message-container bg-gradient-faded-light p-2">
+              <div class="message mb-2">
+                <div class="message-text">
+                  Hey, how can we help you today?
+                </div>
+                <small class="message-time text-sm font-italic">
+                  11:30 AM
+                </small>
+              </div>
+              <div class="message my-message mb-2 text-end">
+                <div class="message-text">
+                  Hi, I have a question about your products.
+                </div>
+                <small class="message-time text-sm font-italic">
+                  11:32 AM
+                </small>
+              </div>
+            </div>
+            <form class="message-form mt-2">
+              <div class="form-group mb-3">
+                <textarea class="form-control border border-radius-5 p-2" placeholder="Type your message here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 @endsection
 

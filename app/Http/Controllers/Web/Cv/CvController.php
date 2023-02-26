@@ -14,7 +14,8 @@ class CvController extends Controller
      */
     public function index()
     {
-        return view('cv.index');
+        $skills = config("skills");
+        return view('cv.index', compact('skills'));
     }
 
     /**
