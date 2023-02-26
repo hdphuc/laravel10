@@ -28,11 +28,6 @@ class PostService
 
     public function updatePost($post, $data)
     {
-        $post->title = $data['title'];
-        $post->url = $data['url'];
-        $post->description = $data['description'];
-        $post->category_id = $data['category_id'];
-
         if (isset($data['image'])) {
             $image = $data['image'];
             $filename = time() . '_' . $image->getClientOriginalName();
@@ -42,10 +37,9 @@ class PostService
                 Storage::delete('public/images/' . $post->image);
             }
 
-            $post->image = $filename;
+            $data['image'] = $filename;
         }
-
-        $post->save();
+        $post->update( $data );
 
         return $post;
     }

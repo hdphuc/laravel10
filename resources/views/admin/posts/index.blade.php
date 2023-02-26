@@ -11,7 +11,7 @@
                         </div>
                         <div class="card-body pb-4">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-lg-3 mb-3">
                                     <div class="input-group w-100">
                                         <div class="form-outline w-75">
                                             <input type="search" id="form1"
@@ -23,33 +23,22 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <div class="input-group">
-                                        <div class="form-outline w-100">
-                                            <input type="email" id="form2" class="form-control border ps-2" />
-                                            <label class="form-label ps-2" for="form2">Email</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3">
+                                <div class="col-lg-3 mb-3">
                                     <div class="input-group">
                                         <select class="form-control border form-select ps-2 pe-2" id="select01">
-                                            <option value="">Select</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            <option value="">Select categories</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                </div>
                             </div>
-                            <div class="row mt-4">
+                            <div class="row">
                                 <div class="col-auto">
                                     <a href="{{ route('admin.posts.add') }}" class="btn btn-sm btn-primary m-0">Add</a>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-auto delete-all-warp d-none">
                                     <a href="javascripts:;" class="btn btn-sm btn-danger m-0">Delete</a>
                                 </div>
                             </div>
@@ -85,7 +74,7 @@
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                                             width="20">
-                                            Status
+                                            url
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                                             width="10">
@@ -102,34 +91,46 @@
                                             </td>
                                         </tr>
                                     @else
+                                        @php 
+                                            $startStt = (($posts->currentPage() - 1) * $posts->perPage()) + 1;
+                                        @endphp
                                         @foreach ($posts as $post)
-                                            <tr>
+                                        <tr>
                                                 <td>
-                                                    <p class="text-xs ps-3 font-weight-bold mb-0">1</p>
+                                                    <p class="text-xs ps-3 font-weight-bold mb-0">{{ $startStt++ }}</p>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm">
-                                                                <a href="#1">New post 1</a>
+                                                                <a href="{{ route('admin.posts.edit', $post->id) }}"> {{ $post->title }} </a>
                                                             </h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs font-weight-bold mb-0">content post ...</p>
+                                                    <p class="text-xs font-weight-bold mb-0"> {{ $post->description }}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">Online</span>
+                                                    {{ $post->url }}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                    <span class="text-secondary text-xs font-weight-bold"> {{ $post->created_at }}</span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="javascript:;" class="text-info font-weight-bold text-xs"
-                                                        data-toggle="tooltip" data-original-title="Edit user">
-                                                        Edit
-                                                    </a>
+                                                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                                        @csrf                                                    
+                                                        @method('DELETE')                                                    
+                                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="text-info font-weight-bold text-xs me-2"
+                                                            data-toggle="tooltip" data-original-title="Edit user">
+                                                            Edit
+                                                        </a>
+                                                        <button href="{{ route('admin.posts.destroy', $post->id) }}" class="btn btn-sm btn-link text-danger font-weight-bold text-xs mb-0"
+                                                            data-toggle="tooltip" data-original-title="Delete user">
+                                                            Detele
+                                                        </button>
+                                                    </form>
+                                                   
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -140,22 +141,7 @@
                     </div>
                 </div>
                 <div class="pagination-warp d-flex flex-warp justify-content-center">
-                    <nav aria-label="Page navigation text-center">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
+                    {{ $posts->withQueryString()->links('pagination.custom') }}
                     </nav>
                 </div>
             </div>
