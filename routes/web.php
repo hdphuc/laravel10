@@ -55,6 +55,18 @@ Route::name('admin')
         Route::put('/{id}', [App\Http\Controllers\Admin\PostController::class, 'update'])->name('.update');
         Route::delete('/{id}', [App\Http\Controllers\Admin\PostController::class, 'destroy'])->name('.destroy');
     });
+
+    Route::name('.categories')
+    ->prefix('categories')
+    ->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('.index');
+        Route::get('/add', [App\Http\Controllers\Admin\CategoriesController::class, 'create'])->name('.add');
+        Route::post('/add', [App\Http\Controllers\Admin\CategoriesController::class, 'store'])->name('.store');
+        Route::get('/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'destroy'])->name('.destroy');
+    });
 });
 
 Route::name('web')

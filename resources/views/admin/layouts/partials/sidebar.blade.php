@@ -34,7 +34,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Route::current()->getName() == "admin.posts.index" ? 'active bg-gradient-primary' : '' }}" href="{{ route('admin.posts.index') }}">
+          <a class="nav-link text-white {{ Route::current()->getName() == "admin.categories.index" ? 'active bg-gradient-primary' : '' }}" href="{{ route('admin.categories.index') }}" id="dropdownPost" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <span class="nav-link-text ms-1">Categories</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ Route::current()->getName() == "admin.posts.index" ? 'active bg-gradient-primary' : '' }}" href="{{ route('admin.posts.index') }}" id="dropdownPost" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-clipboard-list"></i>
             </div>
